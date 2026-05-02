@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Test URL input",
+    "input": {
+      "video_path": "https://pub-2f406cc40cd840ef9f9c76f30760bc6c.r2.dev/test.mp4",
+      "wav_path": "https://pub-2f406cc40cd840ef9f9c76f30760bc6c.r2.dev/test.wav",
+      "input_type": "video",
+      "person_count": "single"
+    }
+  }
+]
