@@ -321,8 +321,10 @@ def handler(job):
     else:  # video
         # 비디오 입력 처리 (video_path, video_url, video_base64 중 하나만 사용)
         if "video_path" in job_input:
+            _vid_val = job_input["video_path"]
+            _vid_type = "url" if isinstance(_vid_val, str) and _vid_val.startswith("http") else "path"
             media_path = process_input(
-                job_input["video_path"], task_id, "input_video.mp4", "path"
+                _vid_val, task_id, "input_video.mp4", _vid_type
             )
         elif "video_url" in job_input:
             media_path = process_input(
@@ -342,8 +344,10 @@ def handler(job):
     wav_path_2 = None  # 다중 인물용 두 번째 오디오
 
     if "wav_path" in job_input:
+        _wav_val = job_input["wav_path"]
+        _wav_type = "url" if isinstance(_wav_val, str) and _wav_val.startswith("http") else "path"
         wav_path = process_input(
-            job_input["wav_path"], task_id, "input_audio.wav", "path"
+            _wav_val, task_id, "input_audio.wav", _wav_type
         )
     elif "wav_url" in job_input:
         wav_path = process_input(
@@ -361,8 +365,10 @@ def handler(job):
     # 다중 인물용 두 번째 오디오 처리
     if person_count == "multi":
         if "wav_path_2" in job_input:
+            _wav2_val = job_input["wav_path_2"]
+            _wav2_type = "url" if isinstance(_wav2_val, str) and _wav2_val.startswith("http") else "path"
             wav_path_2 = process_input(
-                job_input["wav_path_2"], task_id, "input_audio_2.wav", "path"
+                _wav2_val, task_id, "input_audio_2.wav", _wav2_type
             )
         elif "wav_url_2" in job_input:
             wav_path_2 = process_input(
